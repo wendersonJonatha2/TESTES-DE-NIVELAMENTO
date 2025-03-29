@@ -2,8 +2,8 @@ import zipfile
 import os
 from pathlib import Path
 
-# Configuração definitiva de caminhos
-BASE_DIR = Path(__file__).parent.absolute()  # Pasta 1_Web_Scraping
+
+BASE_DIR = Path(__file__).parent.absolute()  
 ANEXOS_DIR = BASE_DIR / 'anexos'
 RESULTADOS_DIR = BASE_DIR / 'resultados'
 
@@ -55,6 +55,6 @@ if __name__ == "__main__":
     
     compactar_anexos(nome_zip)
 
-    # Adicione no final do script para abrir a pasta de resultados
+    
 import os
 os.startfile(RESULTADOS_DIR)
