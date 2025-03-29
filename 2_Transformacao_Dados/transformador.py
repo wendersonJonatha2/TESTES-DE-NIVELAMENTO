@@ -5,15 +5,15 @@ import os
 from pathlib import Path
 import warnings
 
-# Ignorar avisos
+
 warnings.filterwarnings('ignore')
 
-# Configuração de caminhos
+
 BASE_DIR = Path(__file__).parent
 INPUT_DIR = BASE_DIR / "input"
 OUTPUT_DIR = BASE_DIR / "output"
 
-# Garante que as pastas existam
+
 INPUT_DIR.mkdir(exist_ok=True)
 OUTPUT_DIR.mkdir(exist_ok=True)
 
@@ -28,7 +28,7 @@ def extrair_tabela_pdf():
     print("⏳ Extraindo tabelas...")
     
     try:
-        # Tenta ler com encoding 'latin-1' (mais tolerante)
+        
         dfs = tabula.read_pdf(
             str(caminho_pdf),
             pages='all',
@@ -55,13 +55,13 @@ def processar_dados(df):
     if df is None:
         return None
     
-    # Substitui abreviações
+    
     df.replace({
         "OD": "Odontológico",
         "AMB": "Ambulatorial"
     }, inplace=True)
     
-    # Remove linhas vazias
+    
     df.dropna(how='all', inplace=True)
     
     return df
@@ -74,7 +74,7 @@ def salvar_resultados(df, nome):
     nome_csv = f"Rol_Procedimentos_{nome}.csv"
     nome_zip = f"Teste_{nome}.zip"
     
-    # Salva CSV
+    
     try:
         df.to_csv(OUTPUT_DIR / nome_csv, index=False, encoding='utf-8-sig')
         print(f"💾 CSV salvo: {OUTPUT_DIR / nome_csv}")
@@ -82,7 +82,7 @@ def salvar_resultados(df, nome):
         print(f"❌ Erro ao salvar CSV: {e}")
         return False
 
-    # Cria ZIP
+    
     try:
         with zipfile.ZipFile(OUTPUT_DIR / nome_zip, 'w') as zipf:
             zipf.write(OUTPUT_DIR / nome_csv, arcname=nome_csv)
