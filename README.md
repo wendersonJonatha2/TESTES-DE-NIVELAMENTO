@@ -1,3 +1,44 @@
+## Desafio Técnico
+
+Este repositório contém a implementação do desafio técnico proposto para a seleção.
+
+### Tecnologias Utilizadas
+- Java / Python
+- MySQL 8+ / PostgreSQL 10+
+- Vue.js
+- Postman
+
+### Estrutura do Projeto
+```
+├── web_scraping/         # Código para extração e compactação de arquivos PDF
+├── data_transformation/  # Código para extração e transformação dos dados
+├── database/             # Scripts SQL para criação e importação de tabelas
+├── api/                  # Implementação da API e interface web
+└── postman/              # Coleção do Postman para testes da API
+```
+
+### Funcionalidades
+#### 1. Web Scraping
+- Acessa o site da ANS
+- Faz o download dos Anexos I e II
+- Compacta os arquivos baixados
+
+#### 2. Transformação de Dados
+- Extrai dados da tabela "Rol de Procedimentos e Eventos em Saúde"
+- Salva os dados em um CSV estruturado
+- Compacta o CSV gerado
+
+#### 3. Banco de Dados
+- Baixa arquivos do repositório público da ANS
+- Cria tabelas no banco de dados
+- Importa os dados corretamente formatados
+- Executa queries analíticas
+
+#### 4. API e Interface Web
+- Implementa um servidor que permite busca textual de operadoras
+- Interface web para interação
+- Coleção Postman para testes
+
 # 📋 Banco de Dados ANS - Operadoras de Saúde
 
 Projeto para análise dos dados trimestrais (2023-2024) das operadoras de saúde reguladas pela ANS.
