@@ -48,4 +48,4 @@ LIMIT 10;
   - Sumário automático
   - Atalhos úteis
 
-![Exemplo de visualização no VS Code](https://i.imgur.com/J4h8RzO.png)
+
