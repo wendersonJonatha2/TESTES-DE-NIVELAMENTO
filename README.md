@@ -48,4 +48,79 @@ LIMIT 10;
   - Sumário automático
   - Atalhos úteis
 
+### 🚀 Configuração e Execução
+
+#### Preparação do Ambiente:
+
+```bash
+cd "C:\Users\Wenderson\Desktop\Testes de Nivelamento\4_API\backend"
+python -m venv venv
+.\venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+#### Iniciar a API:
+
+```bash
+python app.py
+```
+
+### 🔍 Testando os Endpoints
+
+#### Método 1: Via Postman
+Importe o arquivo:
+
+```text
+/4_API/postman/ANS_Operadoras_API.postman_collection.json
+```
+
+Configure as variáveis:
+
+```json
+{
+  "base_url": "http://localhost:5000",
+  "search_term": "saude",
+  "result_limit": "5"
+}
+```
+
+#### Método 2: Via Terminal
+
+```bash
+# Busca básica
+curl "http://localhost:5000/api/buscar?q=hospital"
+
+# Health Check
+curl "http://localhost:5000/api/health"
+```
+
+### ⚠️ Solução para Problemas Comuns
+
+#### Aviso CRLF/LF no Git (Windows)
+Adicione este arquivo `.gitattributes` na raiz:
+
+```text
+*.json text eol=lf
+*.md text eol=lf
+*.py text eol=lf
+```
+
+E execute:
+
+```bash
+git config --global core.autocrlf true
+```
+
+### 📌 Exemplo de Resposta
+
+```json
+[
+  {
+    "registro_ans": "12345",
+    "nome_fantasia": "SAUDE TOTAL",
+    "uf": "SP",
+    "cnpj": "00.000.000/0001-00"
+  }
+]
+```
 
