@@ -1,0 +1,112 @@
+{
+	"info": {
+		"_postman_id": "30e58fe3-f7b2-492b-9374-6a5d3b6e7c06",
+		"name": "ANS Operadoras API",
+		"description": "Coleção para teste da API de Operadoras de Saúde ANS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43364121"
+	},
+	"item": [
+		{
+			"name": "Buscar Operadoras",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/buscar?q={{search_term}}&limit={{result_limit}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"buscar"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{{search_term}}"
+						},
+						{
+							"key": "limit",
+							"value": "{{result_limit}}",
+							"description": "Número máximo de resultados (opcional)"
+						}
+					]
+				},
+				"description": "Busca operadoras por termo"
+			},
+			"response": []
+		},
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/health",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"health"
+					]
+				},
+				"description": "Verifica status da API"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "test",
+			"script": {
+				"exec": [
+					"// Testes para Buscar Operadoras",
+					"pm.test(\"Status code is 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});",
+					"",
+					"pm.test(\"Response time is less than 500ms\", function () {",
+					"    pm.expect(pm.response.responseTime).to.be.below(500);",
+					"});",
+					"",
+					"pm.test(\"Response has valid JSON\", function () {",
+					"    pm.response.to.have.jsonBody();",
+					"});",
+					"",
+					"// Testes para Health Check",
+					"pm.test(\"Health Check - Status 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});",
+					"",
+					"pm.test(\"Health Check - Valid response\", function () {",
+					"    var jsonData = pm.response.json();",
+					"    pm.expect(jsonData).to.have.property(\"status\");",
+					"    pm.expect(jsonData.status).to.be.oneOf([\"OK\", \"ERROR\"]);",
+					"});"
+				],
+				"type": "text/javascript"
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:5000"
+		},
+		{
+			"key": "search_term",
+			"value": "saude"
+		},
+		{
+			"key": "result_limit",
+			"value": "50"
+		}
+	]
+}
